@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -11,12 +11,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\lhpch.h" />
+    <ClInclude Include="src\Lighthouse\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Lighthouse\Events\Event.h" />
+    <ClInclude Include="src\Lighthouse\Events\KeyEvent.h" />
+    <ClInclude Include="src\Lighthouse\Events\MouseEvent.h" />
+    <ClInclude Include="src\Lighthouse\Log.h" />
     <ClInclude Include="src\Lighthouse.h" />
     <ClInclude Include="src\Lighthouse\Application.h" />
     <ClInclude Include="src\Lighthouse\Core.h" />
     <ClInclude Include="src\Lighthouse\EntryPoint.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\lhpch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\Lighthouse\Log.cpp" />
     <ClCompile Include="src\Lighthouse\Application.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -68,6 +79,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>LH_PLATFORM_WINDOWS;LH_BUILD_DLL;LH_PLATFORM_WINDOWS_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>src;$(SolutionDir)Lighthouse\vendor\spdlog\include</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>lhpch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -82,6 +96,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>LH_PLATFORM_WINDOWS;LH_BUILD_DLL;LH_PLATFORM_WINDOWSNDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>src;$(SolutionDir)Lighthouse\vendor\spdlog\include</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>lhpch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

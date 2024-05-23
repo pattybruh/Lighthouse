@@ -9,3 +9,5 @@
 #else
 	#error Lighthouse only on Windows
 #endif
+
+#define BIT(x) (1 << x)
